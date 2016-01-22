@@ -36,4 +36,12 @@ public class StylistsTest {
     assertEquals(0, newStylist.all().size());
   }
 
+  @Test
+  public void stylist_successfullyFind() {
+    Stylists newStylist = new Stylists("Gloria");
+    newStylist.save();
+    Stylists savedStylist = Stylists.find(newStylist.getId());
+    assertTrue(newStylist.equals(savedStylist));
+  }
+
 }
