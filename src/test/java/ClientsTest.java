@@ -14,4 +14,14 @@ public class ClientsTest {
     assertEquals(Clients.all().size(), 0);
   }
 
+  @Test
+  public void clients_successfullyCreated() {
+    Stylists newStylist = new Stylists("Gloria");
+    newStylist.save();
+    Clients newClient = new Clients("Charlie", newStylist.getId());
+    newClient.save();
+    assertTrue(newClient instanceof Clients);
+    assertEquals("Charlie", newClient.getName());
+  }
+
 }
