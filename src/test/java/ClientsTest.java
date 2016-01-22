@@ -24,4 +24,14 @@ public class ClientsTest {
     assertEquals("Charlie", newClient.getName());
   }
 
+  @Test
+  public void clients_successfullyFinds() {
+    Stylists newStylist = new Stylists("Gloria");
+    newStylist.save();
+    Clients newClient = new Clients("Charlie", newStylist.getId());
+    newClient.save();
+    Clients savedClient = Clients.find(newClient.getId());
+    assertTrue(newClient.equals(savedClient));
+  }
+
 }
