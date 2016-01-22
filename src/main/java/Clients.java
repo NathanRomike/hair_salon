@@ -11,4 +11,12 @@ public class Clients {
     this.mStylistId = stylists_id;
   }
 
+  public static List<Clients> all() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "SELECT id AS mId, name AS mName, stylist_id AS mStylistId FROM clients";
+      return con.createQuery(sql)
+        .executeAndFetch(Clients.class);
+    }
+  }
+
 }
