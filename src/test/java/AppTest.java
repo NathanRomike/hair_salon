@@ -36,4 +36,20 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/");
     assertThat(pageSource()).contains("Gloria");
   }
+
+  @Test
+  public void inputOnRootAddsStylist() {
+    goTo("http://localhost:4567/");
+    fill(".newStylistInput").with("Gloria");
+    submit(".btn");
+    assertThat(pageSource()).contains("Gloria");
+  }
+  // @Test
+  // public void stylistLinkDispaysPageForStylist() {
+  //   Stylists newStylist = new Stylists("Gloria");
+  //   newStylist.save();
+  //   goTo("http://localhost:4567/");
+  //   click("a", withText("Gloria"));
+  //   assertThat(pageSource()).contains("Gloria");
+  // }
 }
