@@ -10,7 +10,7 @@
 
 ## Setup
 
->View this application deployed to [Heroku](https://heroku.com/).
+>View this application deployed to [Heroku](https://immense-headland-52513.herokuapp.com/).
 
 **Or**
 
@@ -26,6 +26,7 @@
 * Spark
 * FluentLenium
 * Heroku
+* databases!
 
 ### Legal
 
