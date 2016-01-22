@@ -54,4 +54,12 @@ public class Clients {
     }
   }
 
+  public static Clients find(int id) {
+    String sql = "SELECT id AS mId, name AS mName, stylist_id as mStylistId FROM clients WHERE id = :id";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Clients.class);
+    }
+  }
 }
