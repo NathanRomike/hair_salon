@@ -14,18 +14,26 @@ public class StylistsTest {
   }
 
   @Test
-  public void stylist_seccesfullyCreated() {
+  public void stylist_successfullyCreated() {
     Stylists newStylist = new Stylists("Gloria");
     newStylist.save();
     assertEquals("Gloria", newStylist.getName());
   }
 
   @Test
-  public void stylist_SeccesfullyUpdated() {
+  public void stylist_successfullyUpdated() {
     Stylists newStylist = new Stylists("Gloria");
     newStylist.save();
     newStylist.update("Glow");
     assertEquals("Glow", newStylist.all().get(0).getName());
+  }
+
+  @Test
+  public void stylist_successfullyDelete() {
+    Stylists newStylist = new Stylists("Gloria");
+    newStylist.save();
+    newStylist.delete();
+    assertEquals(0, newStylist.all().size());
   }
 
 }
