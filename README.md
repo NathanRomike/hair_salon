@@ -1,12 +1,12 @@
-# Dictionary Builder - Java
+# Hair Salon App - Java
 
-##### This application is to test my knowledge of java. 1.15.2016.
+##### This application is to test my knowledge of building databases in java. 1.22.2016.
 
 #### By **Nathan Romike**
 
 ## Description
 
-> This application exhibits my comprehension of creating java applications with object oriented development. Review my work and tell me what you think. Lets make awesome stuff together!
+> This application exhibits my comprehension of creating java applications utilizing databases. Review my work and tell me what you think. Lets make awesome stuff together!
 
 ## Setup
 
