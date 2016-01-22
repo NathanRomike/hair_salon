@@ -26,7 +26,7 @@ public class AppTest extends FluentTest {
   @Test
   public void rootTest() {
     goTo("http://localhost:4567/");
-    assertThat(pageSource()).contains("Welcome to the Salon Organizer!");
+    assertThat(pageSource()).contains("Welcome to Salon Manager!");
   }
 
   @Test
@@ -44,12 +44,13 @@ public class AppTest extends FluentTest {
     submit(".btn");
     assertThat(pageSource()).contains("Gloria");
   }
-  // @Test
-  // public void stylistLinkDispaysPageForStylist() {
-  //   Stylists newStylist = new Stylists("Gloria");
-  //   newStylist.save();
-  //   goTo("http://localhost:4567/");
-  //   click("a", withText("Gloria"));
-  //   assertThat(pageSource()).contains("Gloria");
-  // }
+
+  @Test
+  public void stylistLinkDispaysPageForStylist() {
+    Stylists newStylist = new Stylists("Gloria");
+    newStylist.save();
+    goTo("http://localhost:4567/");
+    click("a", withText("Gloria"));
+    assertThat(pageSource()).contains("Gloria");
+  }
 }
