@@ -9,6 +9,20 @@ public class Stylists {
     this.mName = name;
   }
 
+  public String getName() {
+    return mName;
+  }
+
+  public void save() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO stylists(name) VALUES (:name)";
+      this.mId = (int) con.createQuery(sql, true)
+        .addParameter("name", this.mName)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
   public static List<Stylists> all() {
     String sql = "SELECT id AS mId, name AS mName FROM stylists";
     try(Connection con = DB.sql2o.open()) {
