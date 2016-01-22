@@ -54,4 +54,13 @@ public class ClientsTest {
     assertEquals("Chuck", thirdClient.getName());
     assertEquals("Christina", Stylists.find(thirdClient.getStylistId()).getName());
   }
+
+  @Test
+  public void clients_returnsStylistName() {
+    Stylists newStylist = new Stylists("Gloria");
+    newStylist.save();
+    Clients newClient = new Clients("Charlie", newClient.getId());
+    newClient.save();
+    assertEquals("Gloria", newClient.getStylistName());
+  }
 }
