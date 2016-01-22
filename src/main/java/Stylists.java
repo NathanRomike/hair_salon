@@ -29,4 +29,14 @@ public class Stylists {
       return con.createQuery(sql).executeAndFetch(Stylists.class);
     }
   }
+
+  public void update(String newName) {
+    this.mName = newName;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET name = :name";
+      con.createQuery(sql)
+        .addParameter("name", newName)
+        .executeUpdate();
+    }
+  }
 }
