@@ -8,4 +8,11 @@ public class Stylists {
   public Stylists (String name) {
     this.mName = name;
   }
+
+  public static List<Stylists> all() {
+    String sql = "SELECT id AS mId, name AS mName FROM stylists";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Stylists.class);
+    }
+  }
 }
