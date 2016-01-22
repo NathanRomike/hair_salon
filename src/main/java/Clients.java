@@ -18,9 +18,9 @@ public class Clients {
     return mStylistId;
   }
 
-  public Clients (String name, int stylists_id) {
+  public Clients (String name, int stylistId) {
     this.mName = name;
-    this.mStylistId = stylists_id;
+    this.mStylistId = stylistId;
   }
 
   @Override
@@ -60,6 +60,38 @@ public class Clients {
       return con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Clients.class);
+    }
+  }
+
+  public void update(String newName, int newStylistId) {
+    this.mStylistId = newStylistId;
+    this.mName = newName;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET stylist_id = :stylistId, name = :newName";
+      con.createQuery(sql)
+        .addParameter("stylistId", newStylistId)
+        .addParameter("newName", newName)
+        .executeUpdate();
+    }
+  }
+
+  public void update(int newStylistId) {
+    this.mStylistId = newStylistId;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET stylist_id = :stylistId";
+      con.createQuery(sql)
+        .addParameter("stylistId", newStylistId)
+        .executeUpdate();
+    }
+  }
+
+  public void update(String newName) {
+    this.mName = newName;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET name = :name";
+      con.createQuery(sql)
+        .addParameter("name", newName)
+        .executeUpdate();
     }
   }
 }
