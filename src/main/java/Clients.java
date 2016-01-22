@@ -18,6 +18,10 @@ public class Clients {
     return mStylistId;
   }
 
+  public String getStylistName() {
+    return Stylists.find(mStylistId).getName();
+  }
+
   public Clients (String name, int stylistId) {
     this.mName = name;
     this.mStylistId = stylistId;

@@ -59,7 +59,7 @@ public class ClientsTest {
   public void clients_returnsStylistName() {
     Stylists newStylist = new Stylists("Gloria");
     newStylist.save();
-    Clients newClient = new Clients("Charlie", newClient.getId());
+    Clients newClient = new Clients("Charlie", newStylist.getId());
     newClient.save();
     assertEquals("Gloria", newClient.getStylistName());
   }
