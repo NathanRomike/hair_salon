@@ -12,4 +12,12 @@ public class StylistsTest {
   public void all_emptyAtFirst() {
       assertEquals(Stylists.all().size(), 0);
   }
+
+  @Test
+  public void stylist_seccesfullyCreated() {
+    Stylists newStylist = new Stylists("Gloria");
+    newStylist.save();
+    assertEquals("Gloria", newStylist.getName());
+  }
+
 }
