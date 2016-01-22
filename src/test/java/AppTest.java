@@ -53,6 +53,7 @@ public class AppTest extends FluentTest {
     click("a", withText("Gloria"));
     assertThat(pageSource()).contains("Gloria");
   }
+
   @Test
   public void newClientsAddToStylistPage() {
     Stylists newStylist = new Stylists("Gloria");

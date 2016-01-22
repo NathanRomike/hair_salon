@@ -1,12 +1,13 @@
 <h1>Welcome to Salon Manager!</h1>
 
-#foreach ($stylist in $stylists)
-  <a href="/$stylist.getId()">$stylist.getName()</a>
-#end
-
 <form action="/" method="post">
   <input type="text" class="newStylistInput" name="newStylistInput">
   <button type="submit" id="newStylist" class="btn btn-default" name="button">Add Stylist</button>
 </form>
-
+<br>
 <a href="/newclient" id="newClient" class="btn btn-default" name="button">Add Client</a>
+
+<h3>Your Stylists:</h3>
+#foreach ($stylist in $stylists)
+  <h5><a href="/$stylist.getId()">$stylist.getName()</a></h5>
+#end
