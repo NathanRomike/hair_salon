@@ -34,4 +34,24 @@ public class ClientsTest {
     assertTrue(newClient.equals(savedClient));
   }
 
+  @Test
+  public void clients_successfullyUpdatesClientsAndOrStylists() {
+    Stylists firstStylist = new Stylists("Gloria");
+    firstStylist.save();
+    Stylists secondStylist = new Stylists("Christina");
+    secondStylist.save();
+    Clients firstClient = new Clients("Charlie", firstStylist.getId());
+    firstClient.save();
+    Clients secondClient = new Clients("Charlie", firstStylist.getId());
+    secondClient.save();
+    Clients thirdClient = new Clients("Charlie", firstStylist.getId());
+    thirdClient.save();
+    firstClient.update("Charles");
+    secondClient.update(secondStylist.getId());
+    thirdClient.update("Chuck", secondStylist.getId());
+    assertEquals("Charles", firstClient.getName());
+    assertEquals("Christina", Clients.find(secondClient.getStylistId()).getName());
+    assertEquals("Chuck", thirdClient.getName());
+    assertEquals("Christina", Clients.find(thirdClient.getStylistId()).getName());
+  }
 }
