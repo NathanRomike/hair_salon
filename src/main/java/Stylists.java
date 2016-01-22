@@ -13,6 +13,21 @@ public class Stylists {
     return mName;
   }
 
+  public int getId() {
+    return mId;
+  }
+
+  @Override
+  public boolean equals(Object otherStylist) {
+    if (!(otherStylist instanceof Stylists)) {
+      return false;
+    } else {
+      Stylists newStylist = (Stylists) otherStylist;
+      return this.getName().equals(newStylist.getName()) &&
+        this.getId() == newStylist.getId();
+    }
+  }
+
   public void save() {
     try (Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO stylists(name) VALUES (:name)";
@@ -46,6 +61,15 @@ public class Stylists {
       con.createQuery(sql)
         .addParameter("id", mId)
         .executeUpdate();
+    }
+  }
+
+  public static Stylists find(int id) {
+    String sql = "SELECT id AS mId, name AS mName FROM stylists WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Stylists.class);
     }
   }
 }
