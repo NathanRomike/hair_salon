@@ -10,10 +10,6 @@
 
 ## Setup
 
->View this application deployed to [Heroku](https://immense-headland-52513.herokuapp.com/).
-
-**Or**
-
 >Clone repository to local machine, run the program in terminal by entering `$ gradle run`, and navigate to the [localhost](http://localhost:4567/).
 
 ## Technologies Used
