@@ -1,13 +1,24 @@
 <h1>Welcome to Salon Manager!</h1>
-
+<a href="/edit" id="edit" class="btn btn-primary" name="button">Edit Clients and Stylists</a>
 <form action="/" method="post">
   <input type="text" class="newStylistInput" name="newStylistInput">
   <button type="submit" id="newStylist" class="btn btn-default" name="button">Add Stylist</button>
 </form>
 <br>
-<a href="/newclient" id="newClient" class="btn btn-default" name="button">Add Client</a>
-
+<form action="/deleteSylist" method="get">
+  <select id="stylistSelection" name="stylistSelection" type="text">
+    #foreach ($stylist in $stylists)
+    <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-danger" name="button">Delete</button>
+</form>
 <h3>Your Stylists:</h3>
 #foreach ($stylist in $stylists)
   <h5><a href="/$stylist.getId()">$stylist.getName()</a></h5>
+#end
+<a href="/newclient" id="newClient" class="btn btn-default" name="button">Add Client</a>
+<h3>Your Clients:</h3>
+#foreach ($client in $clients)
+  <h4>$client.getName()</h4><p>Stylist: $client.getStylistName()</p>
 #end

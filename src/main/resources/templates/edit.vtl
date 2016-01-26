@@ -1,0 +1,8 @@
+<form action="/updateStylist" method="post">
+  <select id="stylistSelection" name="stylistSelection" type="text">
+    #foreach ($stylist in $stylists)
+    <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+  </select>
+  <input type="text" name="newStylist" id="newStylist">
+</form>

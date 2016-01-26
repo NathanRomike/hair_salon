@@ -4,4 +4,13 @@
   <h3>$client.getName()</h3>
 #end
 <br>
+<form action="/deleteClient" method="get">
+    <select id="clientSelection" name="clientSelection" type="text">
+      #foreach ($client in $clients)
+      <option value="$client.getId()">$client.getName()</option>
+      #end
+    </select>
+  <button type="submit" class="btn btn-danger" name="button">Delete</button>
+</form>
+<br>
 <a href="/" id="home" class="btn btn-default" name="button">Home</a>
