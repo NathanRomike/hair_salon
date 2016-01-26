@@ -10,3 +10,8 @@
   </select>
   <button type="submit" class="btn btn-default" name="button">Add</button>
 </form>
+<br>
+<h2>All Clients:</h3>
+#foreach ($client in $clients)
+  <h3>$client.getName()</h3><p>Stylist: $client.getStylistName()</p>
+#end
