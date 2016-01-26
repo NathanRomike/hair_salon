@@ -10,7 +10,12 @@
 
 ## Setup
 
->Clone repository to local machine, run the program in terminal by entering `$ gradle run`, and navigate to the [localhost](http://localhost:4567/).
+* Clone repository to local machine.
+* Start the database system with terminal command `$ postgres`, leave this window open and runnining.
+* In a new terminal window run `$ psql`
+* Within psql enter `=# CREATE DATABASE hair_salon;`
+* Outside of psql enter the terminal command `$ psql hair_salon > hair_salon.sql`
+* run the program in terminal by entering `$ gradle run`, and navigate to the [localhost](http://localhost:4567/).
 
 ## Technologies Used
 
