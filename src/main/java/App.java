@@ -93,5 +93,16 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/edit", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Stylists stylist = Stylists.find(Integer.parseInt(request.queryParams("stylistSelection")));
+
+      stylist.update(request.queryParams("newStylist"));
+
+      model.put("stylists", Stylists.all());
+      model.put("template", "templates/edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
