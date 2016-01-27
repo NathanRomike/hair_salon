@@ -14,7 +14,7 @@
 * Start the database system with terminal command `$ postgres`, leave this window open and runnining.
 * In a new terminal window run `$ psql`
 * Within psql enter `=# CREATE DATABASE hair_salon;`
-* In a new terminal within the hair_salon directory enter command `$ psql hair_salon < hair_salon.sql`
+* In a new terminal within the hair_salon directory enter `$ psql hair_salon < hair_salon.sql`
 * run the program in terminal by entering `$ gradle run`, and navigate to the [localhost](http://localhost:4567/).
 
 ## Technologies Used
