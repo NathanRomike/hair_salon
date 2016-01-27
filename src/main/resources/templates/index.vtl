@@ -8,6 +8,9 @@
   <button type="submit" id="newStylist" class="btn btn-default" name="button">Add Stylist</button>
 </form>
 <br>
+<a href="/newclient" id="newClient" class="btn btn-default" name="button">Add Client</a>
+<br>
+<br>
 <form action="/deleteSylist" method="get">
   <select id="stylistSelection" name="stylistSelection" type="text">
     #foreach ($stylist in $stylists)
@@ -16,12 +19,12 @@
   </select>
   <button type="submit" class="btn btn-danger" name="button">Delete</button>
 </form>
-<a href="/newclient" id="newClient" class="btn btn-default" name="button">Add Client</a>
-<h3>Your Stylists:</h3>
+<br>
+<h2>Your Stylists:</h2>
 #foreach ($stylist in $stylists)
-  <h5><a href="/$stylist.getId()">$stylist.getName()</a></h5>
+  <h3><a href="/$stylist.getId()">$stylist.getName()</a></h3>
 #end
-<h3>Your Clients:</h3>
+<h2>Your Clients:</h2>
 #foreach ($client in $clients)
-  <h4>$client.getName()</h4><p>Stylist: $client.getStylistName()</p>
+  <h3>$client.getName()</h3> <i>Stylist: $client.getStylistName()</i>
 #end
