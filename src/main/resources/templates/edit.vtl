@@ -8,5 +8,16 @@
   <input type="text" name="newStylist" id="newStylist">
   <button type="submit" id="newStylist" class="btn btn-default" name="button">Edit Stylist</button>
 </form>
-
+<br>
+<h4>Edit Client:</h4>
+<form action="/editclient" method="post">
+  <select id="clientSelection" name="clientSelection" type="text">
+    #foreach ($client in $clients)
+    <option value="$client.getId()">$client.getName()</option>
+    #end
+  </select>
+  <input type="text" name="newClient" id="newClient">
+  <button type="submit" id="newClient" class="btn btn-default" name="button">Edit Stylist</button>
+</form>
+<br>
 <a href="/" id="home" class="btn btn-default" name="button">Home</a>

@@ -99,7 +99,19 @@ public class App {
       Stylists stylist = Stylists.find(Integer.parseInt(request.queryParams("stylistSelection")));
 
       stylist.update(request.queryParams("newStylist"));
+      model.put("clients", Clients.all());
+      model.put("stylists", Stylists.all());
+      model.put("template", "templates/edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
+    post("/editclient", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Clients client = Clients.find(Integer.parseInt(request.queryParams("clientSelection")));
+
+      client.update(request.queryParams("newClient"));
+      model.put("clients", Clients.all());
       model.put("stylists", Stylists.all());
       model.put("template", "templates/edit.vtl");
       return new ModelAndView(model, layout);
