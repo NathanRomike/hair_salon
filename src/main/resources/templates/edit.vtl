@@ -20,7 +20,7 @@
   <button type="submit" id="newClient" class="btn btn-default" name="button">Edit Client</button>
 </form>
 <br>
-<h4>Fire Stylists</h4>
+<h4>Fire Stylists:</h4>
 <form action="/deleteSylist" method="get">
   <select id="stylistSelection" name="stylistSelection" type="text">
     #foreach ($stylist in $stylists)
@@ -30,7 +30,7 @@
   <button type="submit" class="btn btn-danger" name="button">Delete</button>
 </form>
 <br>
-<h4>Drop Clients</h4>
+<h4>Drop Clients:</h4>
 <form action="/deleteClient" method="get">
     <select id="clientSelection" name="clientSelection" type="text">
       #foreach ($client in $clients)
