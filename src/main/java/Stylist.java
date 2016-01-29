@@ -1,11 +1,11 @@
 import org.sql2o.*;
 import java.util.List;
 
-public class Stylists {
+public class Stylist {
   private int mId;
   private String mName;
 
-  public Stylists (String name) {
+  public Stylist (String name) {
     this.mName = name;
   }
 
@@ -19,10 +19,10 @@ public class Stylists {
 
   @Override
   public boolean equals(Object otherStylist) {
-    if (!(otherStylist instanceof Stylists)) {
+    if (!(otherStylist instanceof Stylist)) {
       return false;
     } else {
-      Stylists newStylist = (Stylists) otherStylist;
+      Stylist newStylist = (Stylist) otherStylist;
       return this.getName().equals(newStylist.getName()) &&
         this.getId() == newStylist.getId();
     }
@@ -38,10 +38,10 @@ public class Stylists {
     }
   }
 
-  public static List<Stylists> all() {
+  public static List<Stylist> all() {
     String sql = "SELECT id AS mId, name AS mName FROM stylists";
     try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql).executeAndFetch(Stylists.class);
+      return con.createQuery(sql).executeAndFetch(Stylist.class);
     }
   }
 
@@ -64,12 +64,12 @@ public class Stylists {
     }
   }
 
-  public static Stylists find(int id) {
+  public static Stylist find(int id) {
     String sql = "SELECT id AS mId, name AS mName FROM stylists WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .addParameter("id", id)
-        .executeAndFetchFirst(Stylists.class);
+        .executeAndFetchFirst(Stylist.class);
     }
   }
 }

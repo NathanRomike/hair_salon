@@ -1,6 +1,6 @@
 <h1>Welcome to Salon Manager!</h1>
 <br>
-<a href="/edit" id="edit" class="btn btn-primary" name="button">Edit Clients and Stylists</a>
+<a href="/edit" id="edit" class="btn btn-primary" name="button">Edit Client and Stylist</a>
 <br>
 <br>
 <form action="/" method="post">
@@ -20,11 +20,11 @@
   <button type="submit" class="btn btn-danger" name="button">Delete</button>
 </form>
 <br>
-<h2>Your Stylists:</h2>
+<h2>Your Stylist:</h2>
 #foreach ($stylist in $stylists)
   <h3><a href="/$stylist.getId()">$stylist.getName()</a></h3>
 #end
-<h2>Your Clients:</h2>
+<h2>Your Client:</h2>
 #foreach ($client in $clients)
   <h3>$client.getName()</h3> <i>Stylist: $client.getStylistName()</i>
 #end

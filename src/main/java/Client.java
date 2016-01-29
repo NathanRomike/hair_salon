@@ -1,7 +1,7 @@
 import org.sql2o.*;
 import java.util.List;
 
-public class Clients {
+public class Client {
   private int mId;
   private String mName;
   private int mStylistId;
@@ -19,20 +19,20 @@ public class Clients {
   }
 
   public String getStylistName() {
-    return Stylists.find(mStylistId).getName();
+    return Stylist.find(mStylistId).getName();
   }
 
-  public Clients (String name, int stylistId) {
+  public Client (String name, int stylistId) {
     this.mName = name;
     this.mStylistId = stylistId;
   }
 
   @Override
   public boolean equals(Object otherClient) {
-    if (!(otherClient instanceof Clients)) {
+    if (!(otherClient instanceof Client)) {
       return false;
     } else {
-      Clients newClient = (Clients) otherClient;
+      Client newClient = (Client) otherClient;
       return this.getName().equals(newClient.getName()) &&
         this.getId() == newClient.getId();
     }
@@ -50,20 +50,20 @@ public class Clients {
   }
 
 
-  public static List<Clients> all() {
+  public static List<Client> all() {
     try (Connection con = DB.sql2o.open()) {
       String sql = "SELECT id AS mId, name AS mName, stylist_id AS mStylistId FROM clients";
       return con.createQuery(sql)
-        .executeAndFetch(Clients.class);
+        .executeAndFetch(Client.class);
     }
   }
 
-  public static Clients find(int id) {
+  public static Client find(int id) {
     String sql = "SELECT id AS mId, name AS mName, stylist_id as mStylistId FROM clients WHERE id = :id";
     try (Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .addParameter("id", id)
-        .executeAndFetchFirst(Clients.class);
+        .executeAndFetchFirst(Client.class);
     }
   }
 
@@ -99,12 +99,12 @@ public class Clients {
     }
   }
 
-  public static List<Clients> getClientsByStylist(int stylistId) {
+  public static List<Client> getClientsByStylist(int stylistId) {
     String sql = "SELECT id AS mId, name AS mName, stylist_id AS mStylistId FROM clients WHERE stylist_id = :id";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .addParameter("id", stylistId)
-        .executeAndFetch(Clients.class);
+        .executeAndFetch(Client.class);
     }
   }
 

@@ -31,7 +31,7 @@ public class AppTest extends FluentTest {
 
   @Test
   public void rootPageContainsStylistsList() {
-    Stylists newStylist = new Stylists("Gloria");
+    Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     goTo("http://localhost:4567/");
     assertThat(pageSource()).contains("Gloria");
@@ -47,7 +47,7 @@ public class AppTest extends FluentTest {
 
   @Test
   public void stylistLinkDispaysPageForStylist() {
-    Stylists newStylist = new Stylists("Gloria");
+    Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     goTo("http://localhost:4567");
     click("a", withText("Gloria"));
