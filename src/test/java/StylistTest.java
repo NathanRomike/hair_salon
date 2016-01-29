@@ -29,9 +29,9 @@ public class StylistTest {
 
   @Test
   public void stylist_equalsMethodWorking_equals() {
-    Stylist newStylist = new Stylist("Gloria");
-    newStylist.save();
-    assertTrue(newStylist.equals(newStylist));
+    Stylist firstStylist = new Stylist("Gloria");
+    Stylist secondStylist = new Stylist("Gloria");
+    assertTrue(firstStylist.equals(secondStylist));
   }
 
   @Test

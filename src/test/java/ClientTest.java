@@ -36,10 +36,9 @@ public class ClientTest {
   @Test
   public void client_equalMethodWorking_equals() {
     Stylist newStylist = new Stylist("Gloria");
-    newStylist.save();
-    Client newClient = new Client("Charlie", newStylist.getId());
-    newClient.save();
-    assertTrue(newClient.equals(newClient));
+    Client firstClient = new Client("Charlie", newStylist.getId());
+    Client secondClient = new Client("Charlie", newStylist.getId());
+    assertTrue(firstClient.equals(secondClient));
   }
 
   @Test
