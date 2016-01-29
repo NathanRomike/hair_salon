@@ -15,7 +15,7 @@ public class ClientTest {
   }
 
   @Test
-  public void clients_successfullyCreated() {
+  public void client_successfullyCreated() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
@@ -25,7 +25,16 @@ public class ClientTest {
   }
 
   @Test
-  public void clients_successfullyFinds() {
+  public void client_equalMethodWorking() {
+    Stylist newStylist = new Stylist("Gloria");
+    newStylist.save();
+    Client newClient = new Client("Charlie", newStylist.getId());
+    newClient.save();
+    assertTrue(newClient.equals(newClient));
+  }
+
+  @Test
+  public void client_successfullyFinds() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
@@ -35,7 +44,7 @@ public class ClientTest {
   }
 
   @Test
-  public void clients_successfullyUpdatesClientsAndOrStylists() {
+  public void client_successfullyUpdatesClientsAndOrStylists() {
     Stylist firstStylist = new Stylist("Gloria");
     firstStylist.save();
     Stylist secondStylist = new Stylist("Christina");
@@ -56,7 +65,7 @@ public class ClientTest {
   }
 
   @Test
-  public void clients_returnsStylistName() {
+  public void client_returnsStylistName() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
@@ -65,7 +74,7 @@ public class ClientTest {
   }
 
   @Test
-  public void clients_getClientsByStylistId() {
+  public void client_getClientsByStylistId() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
