@@ -71,10 +71,11 @@ public class Client {
     this.mStylistId = newStylistId;
     this.mName = newName;
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE clients SET stylist_id = :stylistId, name = :newName";
+      String sql = "UPDATE clients SET stylist_id = :stylistId, name = :newName WHERE id = :id";
       con.createQuery(sql)
         .addParameter("stylistId", newStylistId)
         .addParameter("newName", newName)
+        .addParameter("id", mId)
         .executeUpdate();
     }
   }
@@ -82,9 +83,10 @@ public class Client {
   public void update(int newStylistId) {
     this.mStylistId = newStylistId;
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE clients SET stylist_id = :stylistId";
+      String sql = "UPDATE clients SET stylist_id = :stylistId WHERE id = :id";
       con.createQuery(sql)
         .addParameter("stylistId", newStylistId)
+        .addParameter("id", mId)
         .executeUpdate();
     }
   }
@@ -92,9 +94,10 @@ public class Client {
   public void update(String newName) {
     this.mName = newName;
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE clients SET name = :name";
+      String sql = "UPDATE clients SET name = :name WHERE id = :id";
       con.createQuery(sql)
         .addParameter("name", newName)
+        .addParameter("id", mId)
         .executeUpdate();
     }
   }

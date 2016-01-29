@@ -48,9 +48,10 @@ public class Stylist {
   public void update(String newName) {
     this.mName = newName;
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE stylists SET name = :name";
+      String sql = "UPDATE stylists SET name = :name WHERE id = :id";
       con.createQuery(sql)
         .addParameter("name", newName)
+        .addParameter("id", mId)
         .executeUpdate();
     }
   }
