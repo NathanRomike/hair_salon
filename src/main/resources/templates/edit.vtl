@@ -1,5 +1,5 @@
 <h4>Edit Stylist:</h4>
-<form action="/edit" method="post">
+<form action="/editstylist" method="post">
   <select id="stylistSelection" name="stylistSelection" type="text">
     #foreach ($stylist in $stylists)
     <option value="$stylist.getId()">$stylist.getName()</option>
@@ -18,6 +18,26 @@
   </select>
   <input type="text" name="newClient" id="newClient">
   <button type="submit" id="newClient" class="btn btn-default" name="button">Edit Client</button>
+</form>
+<br>
+<h4>Fire Stylists</h4>
+<form action="/deleteSylist" method="get">
+  <select id="stylistSelection" name="stylistSelection" type="text">
+    #foreach ($stylist in $stylists)
+    <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-danger" name="button">Delete</button>
+</form>
+<br>
+<h4>Drop Clients</h4>
+<form action="/deleteClient" method="get">
+    <select id="clientSelection" name="clientSelection" type="text">
+      #foreach ($client in $clients)
+      <option value="$client.getId()">$client.getName()</option>
+      #end
+    </select>
+  <button type="submit" class="btn btn-danger" name="button">Delete</button>
 </form>
 <br>
 <a href="/" id="home" class="btn btn-default" name="button">Home</a>
