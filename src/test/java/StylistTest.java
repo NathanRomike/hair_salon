@@ -14,14 +14,28 @@ public class StylistTest {
   }
 
   @Test
-  public void stylist_successfullyCreated() {
+  public void stylist_saveMethodWorking_save() {
+    Stylist newStylist = new Stylist("Gloria");
+    newStylist.save();
+    assertTrue(newStylist instanceof Stylist);
+  }
+
+  @Test
+  public void stylist_getNameMethodWorking_getName() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     assertEquals("Gloria", newStylist.getName());
   }
 
   @Test
-  public void stylist_successfullyUpdated() {
+  public void stylist_equalsMethodWorking_equals() {
+    Stylist newStylist = new Stylist("Gloria");
+    newStylist.save();
+    assertTrue(newStylist.equals(newStylist));
+  }
+
+  @Test
+  public void stylist_successfullyUpdated_update() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     newStylist.update("Glow");
@@ -29,7 +43,7 @@ public class StylistTest {
   }
 
   @Test
-  public void stylist_successfullyDelete() {
+  public void stylist_successfullyDelete_delete() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     newStylist.delete();
@@ -37,11 +51,21 @@ public class StylistTest {
   }
 
   @Test
-  public void stylist_successfullyFind() {
+  public void stylist_successfullyFind_find() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Stylist savedStylist = Stylist.find(newStylist.getId());
     assertTrue(newStylist.equals(savedStylist));
+  }
+
+  @Test
+  public void stylist_confirmAllMethodWorking_all() {
+    Stylist firstStylist = new Stylist("Gloria");
+    firstStylist.save();
+    Stylist secondStylist = new Stylist("Jim");
+    secondStylist.save();
+    Stylist [] allStylists = new Stylist [] {firstStylist, secondStylist};
+    assertTrue(Stylist.all().containsAll(Arrays.asList(allStylists)));
   }
 
 }

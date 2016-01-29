@@ -15,7 +15,16 @@ public class ClientTest {
   }
 
   @Test
-  public void client_successfullyCreated() {
+  public void client_getNameWorking_getName() {
+    Stylist newStylist = new Stylist("Gloria");
+    newStylist.save();
+    Client newClient = new Client("Charlie", newStylist.getId());
+    newClient.save();
+    assertEquals("Charlie", newClient.getName());
+  }
+
+  @Test
+  public void client_successfullyCreated_save() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
@@ -25,7 +34,7 @@ public class ClientTest {
   }
 
   @Test
-  public void client_equalMethodWorking() {
+  public void client_equalMethodWorking_equals() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
@@ -34,7 +43,7 @@ public class ClientTest {
   }
 
   @Test
-  public void client_successfullyFinds() {
+  public void client_successfullyFinds_find() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
@@ -44,28 +53,26 @@ public class ClientTest {
   }
 
   @Test
-  public void client_successfullyUpdatesClientsAndOrStylists() {
-    Stylist firstStylist = new Stylist("Gloria");
-    firstStylist.save();
-    Stylist secondStylist = new Stylist("Christina");
-    secondStylist.save();
-    Client firstClient = new Client("Charlie", firstStylist.getId());
-    firstClient.save();
-    Client secondClient = new Client("Charlie", firstStylist.getId());
-    secondClient.save();
-    Client thirdClient = new Client("Charlie", firstStylist.getId());
-    thirdClient.save();
-    firstClient.update("Charles");
-    secondClient.update(secondStylist.getId());
-    thirdClient.update("Chuck", secondStylist.getId());
-    assertEquals("Charles", firstClient.getName());
-    assertEquals("Christina", Stylist.find(secondClient.getStylistId()).getName());
-    assertEquals("Chuck", thirdClient.getName());
-    assertEquals("Christina", Stylist.find(thirdClient.getStylistId()).getName());
+  public void client_getNameMethodWorking_getName() {
+    Stylist newStylist = new Stylist("Gloria");
+    newStylist.save();
+    Client newClient = new Client("Charlie", newStylist.getId());
+    newClient.save();
+    assertEquals("Charlie", newClient.getName());
   }
 
   @Test
-  public void client_returnsStylistName() {
+  public void client_successfullyUpdatesClientsAndOrStylists_update() {
+    Stylist stylist = new Stylist("Gloria");
+    stylist.save();
+    Client client = new Client("Charlie", stylist.getId());
+    client.save();
+    client.update("Charles");
+    assertEquals("Charles", client.getName());
+  }
+
+  @Test
+  public void client_returnsStylistName_getStylistName() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
@@ -74,11 +81,35 @@ public class ClientTest {
   }
 
   @Test
-  public void client_getClientsByStylistId() {
+  public void client_methodToGetClientsInStylistWorking_getClientsByStylist() {
     Stylist newStylist = new Stylist("Gloria");
     newStylist.save();
     Client newClient = new Client("Charlie", newStylist.getId());
     newClient.save();
     assertEquals("Charlie", Client.getClientsByStylist(newStylist.getId()).get(0).getName());
+  }
+
+  @Test
+  public void client_confirmAllMethodWorking_all() {
+    Stylist firstStylist = new Stylist("Gloria");
+    firstStylist.save();
+    Client firstClient = new Client("Charlie", firstStylist.getId());
+    firstClient.save();
+    Stylist secondStylist = new Stylist("Jim");
+    secondStylist.save();
+    Client secondClient = new Client("Jill", secondStylist.getId());
+    secondClient.save();
+    Client [] allClients = new Client [] {firstClient, secondClient};
+    assertTrue(Client.all().containsAll(Arrays.asList(allClients)));
+  }
+
+  @Test
+  public void client_successfullyDelete_delete() {
+    Stylist newStylist = new Stylist("Gloria");
+    newStylist.save();
+    Client newClient = new Client("Charlie", newStylist.getId());
+    newClient.save();
+    newClient.delete();
+    assertEquals(0, newClient.all().size());
   }
 }
