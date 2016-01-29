@@ -61,7 +61,7 @@ public class ClientTest {
   }
 
   @Test
-  public void client_successfullyUpdatesClientsAndOrStylists_update() {
+  public void client_updatesclient_update() {
     Stylist stylist = new Stylist("Gloria");
     stylist.save();
     Client client = new Client("Charlie", stylist.getId());
